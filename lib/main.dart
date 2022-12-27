@@ -1,7 +1,6 @@
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
 import 'Widgets/button.dart';
+import 'Models/Food.dart';
+import 'package:flutter/material.dart';
 import 'Widgets/list_containers.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -18,7 +17,13 @@ class MyAppWid extends StatelessWidget {
       print('Hellow');
     }
 
-    List<String> list = ["Test1", "Test2", "Test3", "Test4"];
+    List<Food> FoodList = [
+      Food(1, "กะเพรา", "กะเพราใส่จาน", "50"),
+      Food(2, "ข้าวผัดหมู", "ข้าวผัดหมู", "60"),
+      Food(3, "ข้าวผัดไก่", "ข้าวผัดไก่", "55"),
+      Food(4, "ข้าวผัดปลา", "ข้าวผัดปลา", "55"),
+      Food(5, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70"),
+    ];
 
     return MaterialApp(
       title: 'Main',
@@ -48,31 +53,14 @@ class MyAppWid extends StatelessWidget {
             //               fontWeight: FontWeight.bold),
             //         ))),
             Expanded(
-                child: ListView(
-              children: [
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-                MainContainer(
-                  child: Text('Into The Child'),
-                ),
-              ],
-            )),
+                child: ListView.builder(
+                    itemCount: FoodList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      String foodName = FoodList[index].name;
+                      return MainContainer(
+                        child: Text('$foodName'),
+                      );
+                    })),
             // MainContainer(
             //   child: Text('Into The Child'),
             // ),

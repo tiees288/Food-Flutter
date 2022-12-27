@@ -6,9 +6,9 @@ class MainContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+      margin: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
       width: MediaQuery.of(context).size.width,
-      height: 200,
+      height: 160,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
