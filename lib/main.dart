@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'Widgets/button.dart';
 import 'Models/Food.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +20,16 @@ class MyAppWid extends StatelessWidget {
     }
 
     List<Food> FoodList = [
-      Food(1, "กะเพรา", "กะเพราใส่จาน", "50"),
-      Food(2, "ข้าวผัดหมู", "ข้าวผัดหมู", "60"),
-      Food(3, "ข้าวผัดไก่", "ข้าวผัดไก่", "55"),
-      Food(4, "ข้าวผัดปลา", "ข้าวผัดปลา", "55"),
-      Food(5, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70"),
+      Food(1, "กะเพรา", "กะเพราใส่จาน", "50", "assets/images/กะเพรา.jpg"),
+      Food(2, "ข้าวผัดหมู", "ข้าวผัดหมู", "60", "assets/images/กะเพรา.jpg"),
+      Food(3, "ข้าวผัดไก่", "ข้าวผัดไก่", "55", "assets/images/กะเพรา.jpg"),
+      Food(4, "ข้าวผัดปลา", "ข้าวผัดปลา", "55", "assets/images/กะเพรา.jpg"),
+      Food(5, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
+      Food(6, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
+      Food(7, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
+      Food(8, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
+      Food(9, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
+      Food(10, "ข้าวผัดกุ้ง", "ข้าวผัดกุ้ง", "70", "assets/images/กะเพรา.jpg"),
     ];
 
     return MaterialApp(
@@ -40,25 +47,67 @@ class MyAppWid extends StatelessWidget {
             ),
             backgroundColor: Colors.grey.shade50,
           ),
+          bottomNavigationBar: BottomAppBar(
+              elevation: 1.0,
+              color: Colors.grey.shade50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 15, bottom: 0, left: 20, right: 20),
+                    child: Text("Home"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 15, bottom: 0, left: 20, right: 20),
+                    child: Text("Orders"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 15, bottom: 0, left: 20, right: 20),
+                    child: Text("Account"),
+                  ),
+                ],
+              )),
           body: Column(children: [
-            // Container(
-            //     margin: EdgeInsets.only(top: 10, left: 15),
-            //     child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: Text(
-            //           "Recommended",
-            //           style: TextStyle(
-            //               color: Colors.black,
-            //               fontSize: 22,
-            //               fontWeight: FontWeight.bold),
-            //         ))),
             Expanded(
                 child: ListView.builder(
                     itemCount: FoodList.length,
                     itemBuilder: (BuildContext context, int index) {
                       String foodName = FoodList[index].name;
+                      String foodImg = FoodList[index].imgPath;
+                      String foodDesc = FoodList[index].description;
                       return MainContainer(
-                        child: Text('$foodName'),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width:
+                                  (MediaQuery.of(context).size.width / 2) - 20,
+                              child: Image.asset(foodImg),
+                            ),
+                            Container(
+                                alignment: Alignment.topCenter,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '$foodName',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Text('$foodDesc',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                  ],
+                                ))
+                          ],
+                        ),
                       );
                     })),
             // MainContainer(

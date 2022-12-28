@@ -5,10 +5,11 @@ class MainContainer extends StatelessWidget {
   const MainContainer({super.key, this.child});
   @override
   Widget build(BuildContext context) {
+    // Tap By >>InkWell
     return Container(
       margin: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
       width: MediaQuery.of(context).size.width,
-      height: 160,
+      height: 110,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
