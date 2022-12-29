@@ -48,28 +48,65 @@ class MyAppWid extends StatelessWidget {
             backgroundColor: Colors.grey.shade50,
           ),
           bottomNavigationBar: BottomAppBar(
-              elevation: 1.0,
-              color: Colors.grey.shade50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 0, left: 20, right: 20),
-                    child: Text("Home"),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 0, left: 20, right: 20),
-                    child: Text("Orders"),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 0, left: 20, right: 20),
-                    child: Text("Account"),
-                  ),
-                ],
-              )),
+            elevation: 1.0,
+            color: Colors.grey.shade50,
+            child: Container(
+              height: 40,
+              child: Padding(
+                padding: EdgeInsets.only(top: 6, bottom: 12),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 50,
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          print("HOme");
+                        },
+                        child: Container(
+                            width: 50,
+                            // heigh/t: 4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(children: [
+                              Icon(
+                                Icons.home,
+                                color: Colors.black,
+                              ),
+                              Text(
+                                "Home",
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ]))),
+                    Wrap(children: [
+                      Column(children: [
+                        Icon(
+                          Icons.history,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          "Orders",
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ])
+                    ]),
+                    Wrap(children: [
+                      Column(children: [
+                        Icon(
+                          Icons.account_box,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          "Accounts",
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ])
+                    ]),
+                  ],
+                ),
+              ),
+            ),
+          ),
           body: Column(children: [
             Expanded(
                 child: ListView.builder(
@@ -110,33 +147,6 @@ class MyAppWid extends StatelessWidget {
                         ),
                       );
                     })),
-            // MainContainer(
-            //   child: Text('Into The Child'),
-            // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [SubmitBtn(), DissmissBtn()],
-            // ),
-            // Flex(
-            //   direction: Axis.horizontal,
-            //   children: List.generate(list.length, (index) {
-            //     if (index % 2 == 0) {
-            //       return Expanded(
-            //         flex: 1,
-            //         child: Container(
-            //           child: Text(list[index]),
-            //         ),
-            //       );
-            //     } else {
-            //       return Expanded(
-            //         flex: 1,
-            //         child: Container(
-            //           child: Text(list[index]),
-            //         ),
-            //       );
-            //     }
-            //   }),
-            // )
           ])),
       // theme: ThemeData(primarySwatch: Colors.red.shade500),
     );
