@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-
+import 'Widgets/Carts.dart';
 import 'Widgets/button.dart';
 import 'Models/Food.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +107,7 @@ class MyAppWid extends StatelessWidget {
               ),
             ),
           ),
-          body: Column(children: [
+          body: Stack(children: [
             Expanded(
                 child: ListView.builder(
                     itemCount: FoodList.length,
@@ -147,6 +147,7 @@ class MyAppWid extends StatelessWidget {
                         ),
                       );
                     })),
+            FoodCart(),
           ])),
       // theme: ThemeData(primarySwatch: Colors.red.shade500),
     );
