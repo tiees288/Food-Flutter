@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const BottomApp());
-
 class BottomApp extends StatelessWidget {
   const BottomApp({super.key});
 
@@ -38,30 +36,46 @@ class BottomApp extends StatelessWidget {
                           style: TextStyle(fontSize: 12),
                         )
                       ]))),
-              Wrap(children: [
-                Column(children: [
-                  Icon(
-                    Icons.history,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    "Orders",
-                    style: TextStyle(fontSize: 12),
-                  )
-                ])
-              ]),
-              Wrap(children: [
-                Column(children: [
-                  Icon(
-                    Icons.account_box,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    "Accounts",
-                    style: TextStyle(fontSize: 12),
-                  )
-                ])
-              ]),
+              InkWell(
+                  onTap: () {
+                    print("HOme");
+                  },
+                  child: Container(
+                      width: 50,
+                      // heigh/t: 4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(children: [
+                        Icon(
+                          Icons.history,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          "Orders",
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ]))),
+              InkWell(
+                  onTap: () {
+                    print("Accounts");
+                  },
+                  child: Container(
+                      width: 50,
+                      // heigh/t: 4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(children: [
+                        Icon(
+                          Icons.account_circle,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          "Accounts",
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ])))
             ],
           ),
         ),
