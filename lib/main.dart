@@ -1,10 +1,10 @@
 // Libs
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:helloapp/ApiHelpers/Food.dart';
+import './ApiHelpers/Food.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:helloapp/screen/accounts.dart';
-import 'package:helloapp/screen/home.dart';
+import './screen/accounts.dart';
+import './screen/home.dart';
 // Widgets
 import 'Widgets/BottomApp.dart';
 

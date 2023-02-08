@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../Models/Food.dart';
 import '../list_containers.dart';
-import 'package:helloapp/ApiHelpers/Food.dart';
+import '../../ApiHelpers/Food.dart';
 
 class foodListFututre extends StatefulWidget {
   const foodListFututre({super.key});
