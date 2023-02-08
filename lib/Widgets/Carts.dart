@@ -23,6 +23,7 @@ class _FoodListState extends State<FoodCart> {
           right: 10,
           bottom: 5,
           child: FloatingActionButton(
+            heroTag: 'cart',
             backgroundColor: Colors.white,
             onPressed: () {
               setState(() {
@@ -41,6 +42,7 @@ class _FoodListState extends State<FoodCart> {
             right: 5,
             bottom: 45,
             child: FloatingActionButton(
+              heroTag: 'cart1',
               backgroundColor: Colors.green.shade500,
               child: Text("${totalData}"),
               onPressed: () => {},

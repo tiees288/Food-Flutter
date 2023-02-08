@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screen/accounts.dart';
+import '../main.dart';
 
 class BottomApp extends StatelessWidget {
   const BottomApp({super.key});
@@ -18,7 +20,7 @@ class BottomApp extends StatelessWidget {
             children: [
               InkWell(
                   onTap: () {
-                    print("HOme");
+                    Navigator.pushNamed(context, '/');
                   },
                   child: Container(
                       width: 50,
@@ -38,6 +40,8 @@ class BottomApp extends StatelessWidget {
                       ]))),
               InkWell(
                   onTap: () {
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => Search()));
                     print("HOme");
                   },
                   child: Container(
@@ -58,10 +62,13 @@ class BottomApp extends StatelessWidget {
                       ]))),
               InkWell(
                   onTap: () {
-                    print("Accounts");
+                    Navigator.pushNamed(
+                      context,
+                      '/accounts',
+                    );
                   },
                   child: Container(
-                      width: 50,
+                      width: 55,
                       // heigh/t: 4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
