@@ -20,8 +20,19 @@ class AccountScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomApp(),
       body: Center(
-        child: Text("Account"),
-      ),
+          child: Container(
+        child: Column(
+          children: [
+            Text('Accounts'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text('Login'),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

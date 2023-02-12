@@ -1,10 +1,13 @@
 // Libs
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:helloapp/screen/login.dart';
 import './ApiHelpers/Food.dart';
 import 'package:flutter/cupertino.dart';
+// Screens
 import './screen/accounts.dart';
 import './screen/home.dart';
+import './screen/login.dart';
 // Widgets
 import 'Widgets/BottomApp.dart';
 
@@ -34,6 +37,14 @@ class MyAppWid extends StatelessWidget {
             return PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) =>
                   AccountScreen(),
+              settings: settings,
+              transitionDuration: Duration.zero,
+              reverseTransitionDuration: Duration.zero,
+            );
+          case "/login":
+            return PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  LoginScreen(),
               settings: settings,
               transitionDuration: Duration.zero,
               reverseTransitionDuration: Duration.zero,
