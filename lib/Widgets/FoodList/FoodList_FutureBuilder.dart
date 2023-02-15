@@ -11,13 +11,13 @@ class foodListFututre extends StatefulWidget {
 }
 
 class _foodListFututreState extends State<foodListFututre> {
-  List<Food> FoodList = List.empty();
-  bool isLoading = true;
+  late Future<List<Food>> _FoodList;
+  // bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    fetchFood();
+    _FoodList = fetchFood();
   }
 
   Future<List<Food>> fetchFood() async {
@@ -28,53 +28,57 @@ class _foodListFututreState extends State<foodListFututre> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            var data = snapshot.data;
-            return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String foodName = data[index].name;
-                  String foodImg = data[index].imgPath;
-                  String foodDesc = data[index].description;
-                  return MainContainer(
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          width: (MediaQuery.of(context).size.width / 2) - 20,
-                          child: Image.asset(foodImg),
-                        ),
-                        Container(
-                            alignment: Alignment.topCenter,
-                            padding: EdgeInsets.only(left: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '$foodName',
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          var data = snapshot.data;
+          // setState(() {
+          //   FoodList = data;
+          // });
+          return ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                String foodName = data[index].name;
+                String foodImg = data[index].imgPath;
+                String foodDesc = data[index].description;
+                return MainContainer(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: (MediaQuery.of(context).size.width / 2) - 20,
+                        child: Image.asset(foodImg),
+                      ),
+                      Container(
+                          alignment: Alignment.topCenter,
+                          padding: EdgeInsets.only(left: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '$foodName',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w300),
+                              ),
+                              Text('$foodDesc',
                                   style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                Text('$foodDesc',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                    )),
-                              ],
-                            ))
-                      ],
-                    ),
-                  );
-                });
-          }
-          return LinearProgressIndicator(
-            minHeight: 1,
-            backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-          );
-        },
-        future: fetchFood());
+                                    fontSize: 14,
+                                  )),
+                            ],
+                          ))
+                    ],
+                  ),
+                );
+              });
+        }
+        return LinearProgressIndicator(
+          minHeight: 1,
+          backgroundColor: Colors.grey[200],
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+        );
+      },
+      future: _FoodList,
+      initialData: [],
+    );
   }
 }

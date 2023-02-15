@@ -105,12 +105,37 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigator.pushNamed(context, '/accounts');
-                },
-                child: Text('Login'),
-              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Container(
+                  margin: EdgeInsets.only(right: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.pushNamed(context, '/accounts');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.only(left: 30, right: 30),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      backgroundColor: Colors.black,
+                    ),
+                    child: Text('Login'),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.only(left: 30, right: 30),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    backgroundColor: Colors.black,
+                  ),
+                  onPressed: () {
+                    // Navigator.pushNamed(context, '/accounts');
+                  },
+                  child: Text('Cancel'),
+                ),
+              ])
             ],
           ),
         ));
