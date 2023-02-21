@@ -14,7 +14,7 @@ import './screen/login.dart';
 // Widgets
 import 'Widgets/BottomApp.dart';
 // Providers Models
-import 'store/FoodListData.dart';
+import 'Providers/FoodListData.dart';
 
 main() {
   runApp(const MyAppWid());
@@ -27,7 +27,7 @@ class MyAppWid extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => FoodState()),
+          ChangeNotifierProvider(create: (context) => FoodlistProvider()),
         ],
         child: MaterialApp(
           title: 'Main',

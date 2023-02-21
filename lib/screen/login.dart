@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import '../Widgets/BottomApp.dart';
+
+// Alert
+import '../Widgets/Alert/AlertNotify.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -27,8 +31,6 @@ class LoginScreen extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
-  // final String message;
-  // const LoginForm({super.key, required this.message});
   const LoginForm({super.key});
 
   @override
@@ -37,6 +39,24 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+
+  // Form Validation Schema
+  final EmailShema = ValidationBuilder(requiredMessage: "Please enter email")
+      .email("Email format is incorrect")
+      .required()
+      .build();
+  final PasswordShema =
+      ValidationBuilder(requiredMessage: "Please enter password")
+          .minLength(8, "Password must be at least 8 characters")
+          .required()
+          .build();
+  // Form Controller
+  final EmailController = TextEditingController();
+  final PasswordController = TextEditingController();
+
+  bool _validate() {
+    return _formKey.currentState!.validate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +81,16 @@ class _LoginFormState extends State<LoginForm> {
               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: TextFormField(
+                  controller: EmailController,
+                  validator: EmailShema,
+                  onChanged: ((value) => _validate()),
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black, width: 1.5),
                     ),
                     contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                    focusColor: Colors.grey,
+                    focusColor: Color(0xFFE0E0E0),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
@@ -90,6 +113,9 @@ class _LoginFormState extends State<LoginForm> {
               Padding(
                 padding: EdgeInsets.only(bottom: 15.0),
                 child: TextFormField(
+                  controller: PasswordController,
+                  validator: PasswordShema,
+                  onChanged: ((value) => _validate()),
                   obscureText: true,
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -110,7 +136,23 @@ class _LoginFormState extends State<LoginForm> {
                   margin: EdgeInsets.only(right: 10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/accounts');
+                      String Email = EmailController.text;
+                      String Password = PasswordController.text;
+                      if (_validate()) {
+                        print('Validate Success');
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertNotify(
+                                  content: Column(
+                                children: [
+                                  Text('Validate Error'),
+                                  Text('Please check your input'),
+                                ],
+                              ));
+                            });
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.only(left: 30, right: 30),
@@ -131,7 +173,9 @@ class _LoginFormState extends State<LoginForm> {
                     backgroundColor: Colors.black,
                   ),
                   onPressed: () {
-                    // Navigator.pushNamed(context, '/accounts');
+                    _formKey.currentState?.reset();
+                    EmailController.clear();
+                    PasswordController.clear();
                   },
                   child: Text('Cancel'),
                 ),
