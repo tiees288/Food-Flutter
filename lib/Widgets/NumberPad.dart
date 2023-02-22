@@ -80,7 +80,9 @@ class _ResetPadState extends State<ResetPad> {
 }
 
 class FaceBioMetricsPad extends StatefulWidget {
-  const FaceBioMetricsPad({super.key});
+  final Function() onTap;
+
+  const FaceBioMetricsPad({super.key, required this.onTap});
 
   @override
   State<FaceBioMetricsPad> createState() => _FaceBioMetricsPadState();
@@ -90,9 +92,7 @@ class _FaceBioMetricsPadState extends State<FaceBioMetricsPad> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // print(widget.number);
-      },
+      onTap: () => widget.onTap(),
       child: Container(
         alignment: Alignment.center,
         width: 70,

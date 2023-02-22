@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:helloapp/Widgets/Alert/AlertNotify.dart';
 import '../Widgets/NumberPad.dart';
+import '../Services/Biometrics.dart';
 
 class PasscodeScene extends StatefulWidget {
   const PasscodeScene({super.key});
@@ -17,7 +19,23 @@ class _PasscodeSceneState extends State<PasscodeScene> {
     PassTextController.addListener(() {
       if (PassTextController.text.length == 6) {
         print('Passcode: ${PassTextController.text}');
-        // Navigator.pushNamed(context, '/home');
+        if (PassTextController.text == '123456') {
+          Navigator.pushNamed(context, '/home');
+        } else {
+          PassTextController.text = '';
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertNotify(
+                    content: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Passcode is incorrect'),
+                    // Text('Please check your input'),
+                  ],
+                ));
+              });
+        }
       }
     });
 
@@ -76,7 +94,14 @@ class _PasscodeSceneState extends State<PasscodeScene> {
                         controller: PassTextController,
                       ),
                       NumberPad(number: 0, controller: PassTextController),
-                      FaceBioMetricsPad()
+                      FaceBioMetricsPad(
+                        onTap: () async {
+                          bool isSuccess = await BioMetrics.Authenticate();
+                          if (isSuccess) {
+                            Navigator.pushReplacementNamed(context, '/home');
+                          }
+                        },
+                      )
                     ],
                   ),
                 ],
