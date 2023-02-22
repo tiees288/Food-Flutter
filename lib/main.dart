@@ -1,6 +1,7 @@
 // Libs
 import 'dart:developer';
 
+import 'package:helloapp/screen/otp.dart';
 import 'package:helloapp/screen/passcode.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,14 @@ class MyAppWid extends StatelessWidget {
                 return PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
                       HomeScreen(),
+                  settings: settings,
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                );
+              case '/otp':
+                return PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      OTPScreen(),
                   settings: settings,
                   transitionDuration: Duration.zero,
                   reverseTransitionDuration: Duration.zero,

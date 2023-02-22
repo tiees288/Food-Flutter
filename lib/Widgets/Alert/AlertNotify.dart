@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helloapp/Widgets/Button/ButtonRed.dart';
 
 class AlertNotify extends StatefulWidget {
   final Widget? title;
@@ -37,25 +38,11 @@ class _AlertNotifyState extends State<AlertNotify> {
         child: content,
       ),
       actions: [
-        Container(
-          width: MediaQuery.of(context).size.width - 100,
-          margin: EdgeInsets.only(bottom: 20.0),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.only(left: 30, right: 30, bottom: 5),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                backgroundColor: buttonColor,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('ตกลง'),
-            ),
-          ),
+        ButtonRed(
+          text: 'ตกลง',
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         )
       ],
     );

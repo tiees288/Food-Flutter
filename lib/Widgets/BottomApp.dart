@@ -40,9 +40,10 @@ class BottomApp extends StatelessWidget {
                       ]))),
               InkWell(
                   onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => Search()));
-                    print("HOme");
+                    Navigator.pushNamed(
+                      context,
+                      '/',
+                    );
                   },
                   child: Container(
                       width: 50,

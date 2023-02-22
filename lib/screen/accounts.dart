@@ -30,6 +30,13 @@ class AccountScreen extends StatelessWidget {
               },
               child: Text('Login'),
             ),
+            Text('OTP'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/otp');
+              },
+              child: Text('OTP'),
+            ),
           ],
         ),
       )),
