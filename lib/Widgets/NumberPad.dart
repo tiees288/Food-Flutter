@@ -112,3 +112,109 @@ class _FaceBioMetricsPadState extends State<FaceBioMetricsPad> {
     );
   }
 }
+
+class PassCodeLength extends StatefulWidget {
+  final TextEditingController controller;
+
+  const PassCodeLength({super.key, required this.controller});
+
+  @override
+  State<PassCodeLength> createState() => _PassCodeLengthState();
+}
+
+class _PassCodeLengthState extends State<PassCodeLength> {
+  String passcode_no_input = '\u{25CB}';
+  String passcode_input = '\u{25CF}';
+
+  List<String> passcode = [
+    '\u{25CB}',
+    '\u{25CB}',
+    '\u{25CB}',
+    '\u{25CB}',
+    '\u{25CB}',
+    '\u{25CB}'
+  ];
+
+  // widget.controller.addListener(() {
+  //   setState(() {
+  //     passcode = widget.controller.text.split('');
+  //   });
+  // });
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController controller = widget.controller;
+
+    widget.controller.addListener(() {
+      setState(() {
+        List<String> newPasscode = [];
+        for (int i = 0; i < passcode.length; i++) {
+          if (controller.text.split('').asMap().containsKey(i)) {
+            newPasscode.add(passcode_input);
+          } else {
+            newPasscode.add(passcode_no_input);
+          }
+        }
+        passcode = newPasscode;
+      });
+    });
+
+    return Container(
+      margin: EdgeInsets.only(bottom: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[0],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[1],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[2],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[3],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[4],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Text(passcode[5],
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400)),
+          ),
+        ],
+      ),
+    );
+    ;
+  }
+}

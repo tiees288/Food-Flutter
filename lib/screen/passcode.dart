@@ -14,6 +14,13 @@ class _PasscodeSceneState extends State<PasscodeScene> {
 
   @override
   Widget build(BuildContext context) {
+    PassTextController.addListener(() {
+      if (PassTextController.text.length == 6) {
+        print('Passcode: ${PassTextController.text}');
+        // Navigator.pushNamed(context, '/home');
+      }
+    });
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF2D2D2D),
@@ -26,7 +33,7 @@ class _PasscodeSceneState extends State<PasscodeScene> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 50),
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
                     child: Text(
                       'Enter Passcode',
                       style: TextStyle(
@@ -34,6 +41,9 @@ class _PasscodeSceneState extends State<PasscodeScene> {
                         fontSize: 30,
                       ),
                     ),
+                  ),
+                  PassCodeLength(
+                    controller: PassTextController,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
