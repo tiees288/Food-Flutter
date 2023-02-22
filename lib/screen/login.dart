@@ -83,6 +83,9 @@ class _LoginFormState extends State<LoginForm> {
                 child: TextFormField(
                   controller: EmailController,
                   validator: EmailShema,
+                  // readOnly: true,
+                  // enabled: false,
+                  // enableInteractiveSelection: false,
                   onChanged: ((value) => _validate()),
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
