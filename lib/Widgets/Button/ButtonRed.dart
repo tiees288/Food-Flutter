@@ -23,7 +23,8 @@ class ButtonRed extends StatelessWidget {
             backgroundColor: buttonColor,
           ),
           onPressed: onPressed,
-          child: Text(this.text),
+          child: Text(this.text,
+              style: TextStyle(color: Colors.white, fontSize: 16)),
         ),
       ),
     );
