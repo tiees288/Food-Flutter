@@ -1,6 +1,7 @@
 // Libs
 import 'dart:developer';
 
+import 'package:helloapp/screen/passcode.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -53,7 +54,7 @@ class MyAppWid extends StatelessWidget {
               case "/login":
                 return PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      LoginScreen(),
+                      PasscodeScene(),
                   settings: settings,
                   transitionDuration: Duration.zero,
                   reverseTransitionDuration: Duration.zero,
